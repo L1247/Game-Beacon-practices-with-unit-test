@@ -1,6 +1,10 @@
+#region
+
 using System;
 using NUnit.Framework;
 using Script.Practice1;
+
+#endregion
 
 public class DamageCalculatorTests
 {
@@ -38,6 +42,24 @@ public class DamageCalculatorTests
                 Assert.Throws<ArgumentException>(() => damageCalculator.CalculateCriticalDamage(damage , critRate , rand));
         // assert
         Assert.AreEqual(expectedErrorMessage , argumentException.Message);
+    }
+
+    [Test(Description = "計算迴避")]
+    [Category("CalculateDodge")]
+    [TestCase(10 , true , Description = "計算迴避_觸發迴避_正常範圍")]
+    [TestCase(15 , true , Description = "計算迴避_觸發迴避_上限")]
+    [TestCase(1 , true , Description = "計算迴避_觸發迴避_下限")]
+    [TestCase(0 , false , Description = "計算迴避_沒觸發迴避_下限之外")]
+    [TestCase(16 , false , Description = "計算迴避_沒觸發迴避")]
+    public void _03_CalculateDodge(int rand , bool expectedDodge)
+    {
+        // arrange
+        var damageCalculator = new DamageCalculator();
+        var doggeRate        = 15;
+        // act
+        var dodgeResult = damageCalculator.CalculateDodge(doggeRate , rand);
+        // assert
+        Assert.AreEqual(expectedDodge , dodgeResult);
     }
 
 #endregion
