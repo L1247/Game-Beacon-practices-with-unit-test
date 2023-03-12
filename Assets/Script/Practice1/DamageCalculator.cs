@@ -38,10 +38,10 @@ namespace Script.Practice1
 
         public int CalculateHurtDamage(int damage , int blockRate , int dodgeRate , int randBlock , int randDodge)
         {
-            var dodgeSuccess    = CalculateDodge(dodgeRate , randDodge);
-            var blockSuccess    = CalculateBlock(blockRate , randBlock);
-            var damageLessThan0 = damage <= 0;
-            var noDamage        = dodgeSuccess || blockSuccess || damageLessThan0;
+            var dodgeSuccess           = CalculateDodge(dodgeRate , randDodge);
+            var blockSuccess           = CalculateBlock(blockRate , randBlock);
+            var damageLessThanOrEqual0 = damage <= 0;
+            var noDamage               = dodgeSuccess || blockSuccess || damageLessThanOrEqual0;
             return noDamage ? 0 : damage;
         }
 
