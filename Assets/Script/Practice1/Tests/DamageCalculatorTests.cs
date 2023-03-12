@@ -94,6 +94,7 @@ public class DamageCalculatorTests
         var damageCalculator = new DamageCalculator();
         // act
         var calculatedHurtDamage = damageCalculator.CalculateHurtDamage(damage , blockRate , dodgeRate , randBlock , randDodge);
+        // assert
         Assert.AreEqual(expectedHurtDamage , calculatedHurtDamage);
     }
 
