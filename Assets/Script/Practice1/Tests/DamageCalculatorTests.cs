@@ -46,8 +46,8 @@ public class DamageCalculatorTests
 
     [Test(Description = "計算迴避")]
     [Category("CalculateDodge")]
-    [TestCase(10 , true , Description = "計算迴避_觸發迴避_正常範圍")]
     [TestCase(15 , true , Description = "計算迴避_觸發迴避_上限")]
+    [TestCase(10 , true , Description = "計算迴避_觸發迴避_正常範圍")]
     [TestCase(1 , true , Description = "計算迴避_觸發迴避_下限")]
     [TestCase(0 , false , Description = "計算迴避_沒觸發迴避_下限之外")]
     [TestCase(16 , false , Description = "計算迴避_沒觸發迴避")]
@@ -64,7 +64,7 @@ public class DamageCalculatorTests
 
     [Test(Description = "計算隔檔")]
     [Category("CalculateBlock")]
-    [TestCase(10 , true , Description = "計算k62;3_觸發隔檔_正常範圍")]
+    [TestCase(10 , true , Description = "計算隔檔_觸發隔檔_正常範圍")]
     [TestCase(15 , true , Description = "計算隔檔_觸發隔檔_上限")]
     [TestCase(1 , true , Description = "計算隔檔_觸發隔檔_下限")]
     [TestCase(0 , false , Description = "計算隔檔_沒觸發隔檔_下限之外")]
