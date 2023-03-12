@@ -36,6 +36,15 @@ namespace Script.Practice1
             return CalculateRandomResult(dodgeRate , rand);
         }
 
+        public int CalculateHurtDamage(int damage , int blockRate , int dodgeRate , int randBlock , int randDodge)
+        {
+            var dodgeSuccess    = CalculateDodge(dodgeRate , randDodge);
+            var blockSuccess    = CalculateBlock(blockRate , randBlock);
+            var damageLessThan0 = damage <= 0;
+            var noDamage        = dodgeSuccess || blockSuccess || damageLessThan0;
+            return noDamage ? 0 : damage;
+        }
+
     #endregion
 
     #region Private Methods

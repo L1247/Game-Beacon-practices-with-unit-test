@@ -80,5 +80,22 @@ public class DamageCalculatorTests
         Assert.AreEqual(expectedBlock , blockResult);
     }
 
+    [Test(Description = "計算傷害_使用Dodge與Block")]
+    [Category("CalculateDamage")]
+    [TestCase(100 , 10 , 80 , 0 , Description = "計算傷害_觸發隔檔")]
+    [TestCase(100 , 90 , 15 , 0 , Description = "計算傷害_觸發迴避")]
+    [TestCase(100 , 100 , 100 , 100 , Description = "計算傷害_隔檔與迴避都沒觸發")]
+    [TestCase(-1 , 100 , 100 , 0 , Description = "Damage小於0")]
+    public void _05_CalculateHurtDamage_With_Doge_And_Block(int damage , int randBlock , int randDodge , int expectedHurtDamage)
+    {
+        // arrange
+        var blockRate        = 15;
+        var dodgeRate        = 60;
+        var damageCalculator = new DamageCalculator();
+        // act
+        var calculatedHurtDamage = damageCalculator.CalculateHurtDamage(damage , blockRate , dodgeRate , randBlock , randDodge);
+        Assert.AreEqual(expectedHurtDamage , calculatedHurtDamage);
+    }
+
 #endregion
 }
