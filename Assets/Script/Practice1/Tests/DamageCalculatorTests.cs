@@ -62,5 +62,23 @@ public class DamageCalculatorTests
         Assert.AreEqual(expectedDodge , dodgeResult);
     }
 
+    [Test(Description = "計算隔檔")]
+    [Category("CalculateBlock")]
+    [TestCase(10 , true , Description = "計算k62;3_觸發隔檔_正常範圍")]
+    [TestCase(15 , true , Description = "計算隔檔_觸發隔檔_上限")]
+    [TestCase(1 , true , Description = "計算隔檔_觸發隔檔_下限")]
+    [TestCase(0 , false , Description = "計算隔檔_沒觸發隔檔_下限之外")]
+    [TestCase(16 , false , Description = "計算隔檔_沒觸發迴避")]
+    public void _04_CalculateBlock(int rand , bool expectedBlock)
+    {
+        // arrange
+        var damageCalculator = new DamageCalculator();
+        var blockRate        = 15;
+        // act
+        var blockResult = damageCalculator.CalculateBlock(blockRate , rand);
+        // assert
+        Assert.AreEqual(expectedBlock , blockResult);
+    }
+
 #endregion
 }
